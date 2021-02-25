@@ -1,0 +1,37 @@
+version: "3"
+
+networks:
+  api-network:
+    driver: bridge
+
+services:
+  db:
+    image: postgres
+    networks:
+      - api-network
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+
+  api:
+    image: pjoaoricardo/python-back-end
+    networks:
+      - api-network
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DEBUG=True
+      - OPENWEATHERMAPS_API_URL=http://api.openweathermap.org/data/2.5
+      - OPENWEATHERMAPS_API_KEY=be262ded982963399b9ce8382d31b5c9
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    working_dir: /app/api/
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db

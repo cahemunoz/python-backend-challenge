@@ -1,3 +1,17 @@
+# dasa-test-backend
+
+### requisitos
+- docker + docker compose 
+## Execução
+
+Rodar o servidor
+
+`docker-compose up --build`
+
+Acessar os endpoints via link:
+
+`http://localhost:8000/`
+
 # Python backend challenge
 
 Este é um projeto para demonstração de um micro-serviço RESTful fictício.
