@@ -33,3 +33,7 @@ Para isso, podemos adicionar uma biblioteca de controle de falhas chamada [circu
 Nessa etapa, adicione e configure o "circuitbreaker" para tornar nosso micro-serviço mais robusto.
 
 Em caso de falha... o que poderia acontecer para que o nosso endpoint não retorne apenas uma resposta de erro genérica?
+
+
+
+Test Fork and pull-request
